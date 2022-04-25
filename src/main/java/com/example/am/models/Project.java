@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -16,4 +17,15 @@ public class Project {
     private long id;
     private String name;
     private String description;
+    private long id_user;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_project")
+    private List<Criterion> criteria;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_project")
+    private List<Alternative> alternatives;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_project")
+    private List<Expert> experts;
+
 }
